@@ -164,11 +164,10 @@ endif
 ####
 # Tool setup
 ####
-MAKE	=	make
 CC		=	gcc
 CXX		=	g++
-CFLAGS	=	-O -Wall -pedantic -std=gnu99 $(EXT_CFLAGS)
-CXXFLAGS=	-O -Wall -pedantic -std=gnu++0x $(EXT_CXXFLAGS)
+CFLAGS	=	-Os -Wall -std=gnu99 $(EXT_CFLAGS)
+CXXFLAGS=	-Os -Wall -std=gnu++0x $(EXT_CXXFLAGS)
 LDFLAGS	=	$(EXT_LDFLAGS)
 RM		=	rm
 STRIP	=	strip
@@ -226,13 +225,6 @@ endif
 ifeq ($(BUILD_TYPE),debug)
 	CFLAGS		+= -g -ggdb -DDEBUG
 	CXXFLAGS	+= -g -ggdb -DDEBUG
-else
- ifeq ($(BUILD_TYPE),release)
-	CFLAGS		+= -O2
-	CXXFLAGS	+= -O2
- else
- 	$(error Unsupported build type: '$(BUILD_TYPE)')
- endif
 endif
 
 ####
